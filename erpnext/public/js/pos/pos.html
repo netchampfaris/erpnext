@@ -1,6 +1,6 @@
 <div class="pos">
 	<div class="row">
-		<div class="col-sm-6 pos-bill-wrapper">
+		<div class="col-sm-5 pos-bill-wrapper">
 			<div class="col-sm-12"><h6 class="form-section-heading uppercase">Item Cart</h6></div>
 			<div class="pos-bill">
 				<div class="item-cart">
@@ -32,7 +32,7 @@
 					<div class="cell text-right">{%= __("Net Total") %}</div>
 					<div class="cell net-total text-right"></div>
 				</div>
-				<div class="pos-list-row tax-area">
+				<div class="pos-list-row tax-area hide">
 					<div class="cell subject"></div>
 					<div class="cell"></div>
 					<div class="cell text-muted">{%= __("Taxes") %}</div>
@@ -61,10 +61,7 @@
 					<div class="cell grand-total text-right lead"></div>
 				</div>
 			</div>
-			<div class="list-customers" style="display:none">
-
-			</div>
-			<div class="row" style="margin-top: 15px">
+			<div class="row" style="margin-top: 30px">
 				<div class="col-xs-6 selected-item">
 
 				</div>
@@ -86,24 +83,31 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-sm-6 pos-items-section">
+	<div class="col-sm-5 list-customers">
+
+	</div>
+	<div class="col-sm-7 pos-items-section">
 		<div class="col-sm-12"><h6 class="form-section-heading uppercase">Stock Items</h6></div>
 		<div class="row pos-item-area">
 
 		</div>
 		<span id="customer-results" style="color:#68a;"></span>
 		<div class="row pos-item-toolbar hide">
-			<div class="search-item-group col-xs-5 hide"></div>
-			<div class="search-item col-xs-7 hide"></div>
+			<!--<div class="search-item-group col-xs-5"></div>-->
+			<!--<div class="search-item col-xs-7"></div>-->
 		</div>
 		<div class="item-list-area">
 			<div class="pos-list-row pos-bill-header text-muted h6">
-				<div class="cell subject">All Item Groups</div>
-				<div class="cell"></div>
-				<div class="cell"></div>
-				<div class="cell"></div>
+				<div class="cell subject search-item-group">
+					<div class="dropdown">
+						<a class="text-muted dropdown-toggle" data-toggle="dropdown"><span class="dropdown-text">All Item Groups</span><i class="caret"></i></a>
+						<ul class="dropdown-menu">
+						</ul>
+					</div>
+				</div>
+				<div class="cell search-item"></div>
 			</div>
-			<div class="app-listing item-list image-view-container three-column">
+			<div class="app-listing item-list image-view-container">
 				
 			</div>
 		</div>
