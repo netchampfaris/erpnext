@@ -1,20 +1,19 @@
 {
- "allow_copy": 0, 
- "allow_guest_to_view": 0, 
- "allow_import": 1, 
- "allow_rename": 1, 
- "autoname": "field:company_name", 
- "beta": 0, 
- "creation": "2013-04-10 08:35:39", 
- "custom": 0, 
- "description": "Legal Entity / Subsidiary with a separate Chart of Accounts belonging to the Organization.", 
- "docstatus": 0, 
- "doctype": "DocType", 
- "document_type": "Setup", 
- "editable_grid": 0, 
+ "allow_copy": 0,
+ "allow_guest_to_view": 0,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:company_name",
+ "beta": 0,
+ "creation": "2013-04-10 08:35:39",
+ "custom": 0,
+ "description": "Legal Entity / Subsidiary with a separate Chart of Accounts belonging to the Organization.",
+ "docstatus": 0,
+ "doctype": "DocType",
+ "document_type": "Setup",
+ "editable_grid": 0,
  "fields": [
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -44,7 +43,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -75,7 +73,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -107,7 +104,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -137,7 +133,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -165,7 +160,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -182,7 +176,7 @@
    "label": "Domain", 
    "length": 0, 
    "no_copy": 0, 
-   "options": "Distribution\nManufacturing\nRetail\nServices\nEducation\nMedical\nOther", 
+   "options": "Distribution\nManufacturing\nRetail\nServices\nEducation\nHealthcare\nOther", 
    "permlevel": 0, 
    "print_hide": 0, 
    "print_hide_if_no_value": 0, 
@@ -195,7 +189,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -224,7 +217,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -255,7 +247,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -286,7 +277,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -316,7 +306,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -346,7 +335,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -375,7 +363,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -405,7 +392,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -436,7 +422,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -468,7 +453,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -500,7 +484,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -530,7 +513,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -563,7 +545,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -594,7 +575,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -627,7 +607,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -658,7 +637,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -689,7 +667,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -720,7 +697,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -750,7 +726,6 @@
    "width": "50%"
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -783,7 +758,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -814,7 +788,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -845,7 +818,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -877,7 +849,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -908,7 +879,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -937,7 +907,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -968,7 +937,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1001,7 +969,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1030,7 +997,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1061,7 +1027,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1093,7 +1058,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1123,7 +1087,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1153,7 +1116,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1183,7 +1145,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1212,7 +1173,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1242,7 +1202,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1272,7 +1231,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1303,7 +1261,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1334,7 +1291,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1363,7 +1319,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1394,7 +1349,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1425,7 +1379,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1455,7 +1408,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1484,7 +1436,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1514,7 +1465,6 @@
    "width": "50%"
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1546,7 +1496,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1578,7 +1527,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1610,7 +1558,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1641,7 +1588,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1673,7 +1619,6 @@
    "width": "50%"
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1705,7 +1650,6 @@
    "unique": 0
   }, 
   {
-   "allow_bulk_edit": 0, 
    "allow_on_submit": 0, 
    "bold": 0, 
    "collapsible": 0, 
@@ -1747,7 +1691,7 @@
  "istable": 0, 
  "max_attachments": 0, 
  "menu_index": 0, 
- "modified": "2017-05-09 11:06:33.629948", 
+ "modified": "2017-05-17 13:26:13.577570", 
  "modified_by": "Administrator", 
  "module": "Setup", 
  "name": "Company", 
