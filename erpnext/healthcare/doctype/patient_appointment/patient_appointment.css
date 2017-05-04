@@ -1,0 +1,19 @@
+.availability-view {
+    height: 40px;
+    border: 1px solid #d1d8dd;
+    position: relative;
+}
+
+.available-slot {
+    position: absolute;
+    height: 38px;
+    top: 0;
+    background-color: #D9F29E;
+}
+
+.booked-slot {
+    position: absolute;
+    height: 38px;
+    top: 0;
+    background-color: #FD8B8B;
+}

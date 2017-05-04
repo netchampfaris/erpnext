@@ -1,8 +1,9 @@
 // Copyright (c) 2016, ESS LLP and contributors
 // For license information, please see license.txt
 frappe.provide("erpnext.queries");
-frappe.ui.form.on('Appointment', {
+frappe.ui.form.on('Patient Appointment', {
 	refresh: function(frm) {
+		frm.trigger("clear_render_availability_view");
 		frm.set_query("patient", function () {
 			return {
 				filters: {"disabled": 0}
@@ -73,18 +74,113 @@ frappe.ui.form.on('Appointment', {
 		}
 
 	},
-	appointment_date: function(frm){
-		frappe.model.set_value(frm.doctype,frm.docname, 'start_dt', new Date(frm.doc.appointment_date + ' ' + frm.doc.appointment_time))
+	appointment_date: function(frm) {
+		if(!(frm.doc.appointment_date && frm.doc.physician)) {
+			// clear the availability view
+			frm.trigger("clear_render_availability_view");
+			frappe.throw(__("Please select Appointment Date and Physician"));
+		}
+		frappe.call({
+			method: "erpnext.healthcare.doctype.patient_appointment.patient_appointment.get_availability_data",
+			args: {
+				date: frm.doc.appointment_date,
+				physician: frm.doc.physician
+			},
+			callback: r => {
+				const values = r.message;
+				erpnext.render_availability_view(frm, values);
+
+				frm.time_limit_start = values.available_slots
+					.map(slot => slot.from_time)
+					.reduce((prev, curr) => {
+						const prev_time = frappe.datetime.parse_time(prev);
+						const curr_time = frappe.datetime.parse_time(curr);
+						return prev_time < curr_time ? prev_time : curr_time;
+					});
+				frm.time_limit_end = values.available_slots
+					.map(slot => slot.to_time)
+					.reduce((prev, curr) => {
+						const prev_time = frappe.datetime.parse_time(prev);
+						const curr_time = frappe.datetime.parse_time(curr);
+						return prev_time > curr_time ? prev_time : curr_time;
+					});
+
+				frm.trigger("limit_appointment_time_picker");
+			}
+		})
+		.fail(() => frm.trigger("clear_render_availability_view"))
+		// frappe.model.set_value(frm.doctype,frm.docname, 'start_dt', new Date(frm.doc.appointment_date + ' ' + frm.doc.appointment_time))
 	},
 	appointment_time: function(frm){
 		frappe.model.set_value(frm.doctype,frm.docname, 'start_dt', new Date(frm.doc.appointment_date + ' ' + frm.doc.appointment_time))
 	},
+	limit_appointment_time_picker: function(frm) {
+		console.log('asdf');
+		frm.time_limit_start = frappe.datetime.parse_time(frm.time_limit_start);
+		frm.time_limit_end = frappe.datetime.parse_time(frm.time_limit_end);
+
+		frm.fields_dict.appointment_time.datepicker.update({
+			minHours: frm.time_limit_start.get('hour'),
+			maxHours: frm.time_limit_end.get('hour'),
+			minMinutes: frm.time_limit_start.get('minute'),
+			maxMinutes: frm.time_limit_end.get('minute')
+		});
+	},
+	clear_render_availability_view: function(frm) {
+		frm.fields_dict.availability_view.$wrapper.html("");
+	}
 });
+
+erpnext.render_availability_view = function(frm, { appointments, available_slots }) {
+
+	const start = frappe.datetime.parse_time("00:00:00");
+	const scale = 24 * 60;
+
+	const slots = available_slots.map(slot => {
+		const from_time = frappe.datetime.parse_time(slot.from_time);
+		const to_time = frappe.datetime.parse_time(slot.to_time);
+
+		const offset = from_time.diff(start, 'minute');
+		const duration = to_time.diff(from_time, 'minute');
+
+		return {
+			left: offset / scale * 100,
+			width: duration / scale * 100
+		}
+	});
+
+	const booked_slots = appointments.map(slot => {
+		const from_time = frappe.datetime.parse_time(slot.appointment_time);
+		const offset = from_time.diff(start, 'minute');
+		const duration = +slot.duration; // convert to number
+
+		return {
+			left: offset / scale * 100,
+			width: duration / scale * 100
+		}
+	});
+
+	const availability_view = `
+		<div class="availability-view">
+			${slots.map(slot => `
+				<div class="available-slot" style="left: ${slot.left}%; width: ${slot.width}%">
+				</div>
+			`).join("")}
+			
+			${booked_slots.map(slot => `
+				<div class="booked-slot" style="left: ${slot.left}%; width: ${slot.width}%">
+				</div>
+			`).join("")}
+		<div>
+	`;
+
+	frm.fields_dict.availability_view.$wrapper.html(availability_view);
+}
 
 var btn_create_consultation = function(frm){
 	var doc = frm.doc;
 	frappe.call({
-		method:"erpnext.healthcare.doctype.appointment.appointment.create_consultation",
+		method:"erpnext.healthcare.doctype.patient_appointment.patient_appointment.create_consultation",
 		args: {appointment: doc.name},
 		callback: function(data){
 			if(!data.exc){
@@ -108,7 +204,7 @@ var btn_create_vital_signs = function (frm) {
 var check_availability_by_dept = function(frm){
 	if(frm.doc.department && frm.doc.appointment_date){
 		frappe.call({
-			method: "erpnext.healthcare.doctype.appointment.appointment.check_availability_by_dept",
+			method: "erpnext.healthcare.doctype.patient_appointment.patient_appointment.check_availability_by_dept",
 			args: {department: frm.doc.department, date: frm.doc.appointment_date, time: frm.doc.appointment_time},
 			callback: function(r){
 				if(r.message) show_availability(frm, r.message)
@@ -123,7 +219,7 @@ var check_availability_by_dept = function(frm){
 var check_availability_by_physician = function(frm){
 	if(frm.doc.physician && frm.doc.appointment_date){
 		frappe.call({
-			method: "erpnext.healthcare.doctype.appointment.appointment.check_availability_by_physician",
+			method: "erpnext.healthcare.doctype.patient_appointment.patient_appointment.check_availability_by_physician",
 			args: {physician: frm.doc.physician, date: frm.doc.appointment_date, time: frm.doc.appointment_time},
 			callback: function(r){
 				show_availability(frm, r.message)
@@ -137,7 +233,7 @@ var check_availability_by_physician = function(frm){
 
 var show_availability = function(frm, result){
 	var d = new frappe.ui.Dialog({
-		title: __("Appointment Availability (Time - Token)"),
+		title: __("Patient Appointment Availability (Time - Token)"),
 		fields: [
 			{
 				fieldtype: "HTML", fieldname: "availability"
@@ -196,7 +292,7 @@ var btn_update_status = function(frm, status){
 	var doc = frm.doc;
 	frappe.call({
 		method:
-		"erpnext.healthcare.doctype.appointment.appointment.update_status",
+		"erpnext.healthcare.doctype.patient_appointment.patient_appointment.update_status",
 		args: {appointmentId: doc.name, status:status},
 		callback: function(data){
 			if(!data.exc){
@@ -210,7 +306,7 @@ var btn_invoice_consultation = function(frm){
 	var doc = frm.doc;
 	frappe.call({
 		method:
-		"erpnext.healthcare.doctype.appointment.appointment.create_invoice",
+		"erpnext.healthcare.doctype.patient_appointment.patient_appointment.create_invoice",
 		args: {company: doc.company, patient: doc.patient, appointments: [doc.name] },
 		callback: function(data){
 			if(!data.exc){
@@ -223,7 +319,7 @@ var btn_invoice_consultation = function(frm){
 	});
 }
 
-frappe.ui.form.on("Appointment", "physician",
+frappe.ui.form.on("Patient Appointment", "physician",
     function(frm) {
 	if(frm.doc.physician){
 		frappe.call({
@@ -239,7 +335,7 @@ frappe.ui.form.on("Appointment", "physician",
 	}
 });
 
-frappe.ui.form.on("Appointment", "patient",
+frappe.ui.form.on("Patient Appointment", "patient",
     function(frm) {
         if(frm.doc.patient){
 		frappe.call({

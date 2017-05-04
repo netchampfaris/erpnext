@@ -11,26 +11,37 @@ from frappe import msgprint, _
 import datetime
 from datetime import timedelta
 import calendar
+from frappe.utils import getdate
+from erpnext.hr.doctype.employee.employee import is_holiday
 from erpnext.setup.doctype.sms_settings.sms_settings import send_sms
 from erpnext.healthcare.scheduler import check_availability
 from erpnext.healthcare.doctype.op_settings.op_settings import get_receivable_account,get_income_account
 
-class Appointment(Document):
+class PatientAppointment(Document):
 	def on_update(self):
-		today = datetime.date.today()
-		appointment_date = getdate(self.appointment_date)
-		#If appointment created for today set as open
-		if(today == appointment_date):
-			frappe.db.set_value("Appointment",self.name,"status","Open")
-			self.reload()
+		pass
+		# today = datetime.date.today()
+		# appointment_date = getdate(self.appointment_date)
+		# #If appointment created for today set as open
+		# if(today == appointment_date):
+		# 	frappe.db.set_value("Appointment",self.name,"status","Open")
+		# 	self.reload()
 
 	def validate(self):
 		if not self.appointment_date:
 			frappe.throw(_("Please select date of appointment"))
-		if not self.end_dt:
-			physician = frappe.get_doc("Physician", self.physician)
-			if physician.schedule:
-				frappe.throw(_("Please use Check Availabilty to create Appointment"))
+		
+		# if self.appointment_time:
+		# 	existing_appointments = frappe.get_all(
+		# 		"Patient Appointment",
+		# 		filters={"physician": self.physician, "appointment_date": self.date},
+		# 		fields=["name", "appointment_time", "duration"])
+			
+
+		# if not self.end_dt:
+		# 	physician = frappe.get_doc("Physician", self.physician)
+		# 	if physician.schedule:
+		# 		frappe.throw(_("Please use Check Availabilty to create Appointment"))
 
 	def after_insert(self):
 		#Check fee validity exists
@@ -64,6 +75,43 @@ def appointment_cancel(appointmentId):
 					frappe.msgprint(_("Appointment cancelled, Please review and cancel the invoice {0}".format(appointment.invoice)))
 				else:
 					frappe.msgprint(_("Appointment cancelled"))
+
+@frappe.whitelist()
+def get_availability_data(date, physician):
+	# get availability data of 'physician' on 'date'
+	date = getdate(date)
+	weekday = date.strftime("%A")
+
+	available_slots = []
+	# get physicians schedule
+	physician_schedule_name = frappe.db.get_value("Physician", physician, "physician_schedule")
+	physician_schedule = frappe.get_doc("Physician Schedule", physician_schedule_name)
+	time_per_appointment = frappe.db.get_value("Physician", physician, "time_per_appointment")
+
+	for t in physician_schedule.time_slots:
+		if weekday == t.day:
+			available_slots.append(t)
+
+	# if physician not available return 
+	if not available_slots:
+		frappe.throw(_("Physician not available on {0}").format(weekday))
+	
+	# if physician on leave return
+
+	# if holiday return
+	# if is_holiday(weekday):
+
+	# get appointments on that day for physician
+	appointments = frappe.get_all(
+		"Patient Appointment",
+		filters={"physician": physician, "appointment_date": date},
+		fields=["name", "appointment_time", "duration"])
+	
+	return {
+		"available_slots": available_slots,
+		"appointments": appointments,
+		"time_per_appointment": time_per_appointment
+	}
 
 @frappe.whitelist()
 def check_availability_by_dept(department, date, time=None, end_dt=None):
