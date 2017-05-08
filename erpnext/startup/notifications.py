@@ -59,7 +59,6 @@ def get_notification_config():
 			"Lab Test": {"docstatus": 0},
 			"Sample Collection": {"docstatus": 0},
 			"Appointment": {"status": "Open"},
-			"Service Task": {"status": "Open"},
 			"Consultation": {"docstatus": 0},
 			"Procedure Appointment": {"status": "Draft"}
 		}
