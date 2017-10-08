@@ -1,0 +1,18 @@
+{
+ "creation": "2017-10-08 13:28:56.431209", 
+ "docstatus": 0, 
+ "doctype": "Data Migration Plan", 
+ "idx": 0, 
+ "mappings": [
+  {
+   "enabled": 1, 
+   "mapping": "Milestone to Project"
+  }
+ ], 
+ "modified": "2017-10-08 13:28:56.431209", 
+ "modified_by": "Administrator", 
+ "module": "ERPNext Integrations", 
+ "name": "Github Integration", 
+ "owner": "Administrator", 
+ "plan_name": "Github Integration"
+}

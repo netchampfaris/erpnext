@@ -1,0 +1,35 @@
+{
+ "creation": "2017-10-08 13:26:51.287504", 
+ "docstatus": 0, 
+ "doctype": "Data Migration Mapping", 
+ "fields": [
+  {
+   "is_child_table": 0, 
+   "local_fieldname": "project_name", 
+   "remote_fieldname": "title"
+  }, 
+  {
+   "is_child_table": 0, 
+   "local_fieldname": "notes", 
+   "remote_fieldname": "description"
+  }, 
+  {
+   "is_child_table": 0, 
+   "local_fieldname": "state", 
+   "remote_fieldname": "status"
+  }
+ ], 
+ "idx": 0, 
+ "local_doctype": "Project", 
+ "local_primary_key": "project_name", 
+ "mapping_name": "Milestone to Project", 
+ "mapping_type": "Pull", 
+ "migration_id_field": "github_integration_id", 
+ "modified": "2017-10-08 13:28:56.722899", 
+ "modified_by": "Administrator", 
+ "name": "Milestone to Project", 
+ "owner": "Administrator", 
+ "page_length": 10, 
+ "remote_objectname": "Milestone", 
+ "remote_primary_key": "number"
+}
