@@ -18,15 +18,21 @@ class GitHubConnection(BaseConnection):
 	def get(self, remote_objectname, fields='"*"', filters=None, start=0, page_length=20):
 
 		if remote_objectname == "Milestone":
-			repos = filters.get('repo', [])
-			return self.get_milestones(repos, start, page_length)
+			repo = filters.get('repo')
+			return self.get_milestones(repo, start, page_length)
+
+		if remote_objectname == "Issue":
+			repo = filters.get('repo')
+			state = filters.get('state', 'open')
+			return self.get_issues(repo, state, start, page_length)
 
 	def get_milestones(self, repo, start=0, page_length=20):
-		user = self.connection.get_user()
-
 		_repo = self.connection.get_repo(repo)
 		return list(_repo.get_milestones()[start:start+page_length])
 
+	def get_issues(self, repo, state, start=0, page_length=20):
+		_repo = self.connection.get_repo(repo)
+		return list(_repo.get_issues(state=state)[start:start+page_length])
 
 def get_connection(connector):
 	connection = GitHubConnection(connector)

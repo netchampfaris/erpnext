@@ -1,0 +1,41 @@
+{
+ "condition": "{\"repo\": \"frappe/erpnext\", \"state\": \"open\"}", 
+ "creation": "2017-10-08 15:55:57.857799", 
+ "docstatus": 0, 
+ "doctype": "Data Migration Mapping", 
+ "fields": [
+  {
+   "is_child_table": 0, 
+   "local_fieldname": "subject", 
+   "remote_fieldname": "title"
+  }, 
+  {
+   "is_child_table": 0, 
+   "local_fieldname": "description", 
+   "remote_fieldname": "body"
+  }, 
+  {
+   "is_child_table": 0, 
+   "local_fieldname": "project", 
+   "remote_fieldname": "milestone"
+  }, 
+  {
+   "is_child_table": 0, 
+   "local_fieldname": "status", 
+   "remote_fieldname": "state"
+  }
+ ], 
+ "idx": 0, 
+ "local_doctype": "Task", 
+ "local_primary_key": "name", 
+ "mapping_name": "Issue to Task", 
+ "mapping_type": "Pull", 
+ "migration_id_field": "github_integration_id", 
+ "modified": "2017-10-08 16:22:04.416367", 
+ "modified_by": "Administrator", 
+ "name": "Issue to Task", 
+ "owner": "Administrator", 
+ "page_length": 10, 
+ "remote_objectname": "Issue", 
+ "remote_primary_key": "number"
+}

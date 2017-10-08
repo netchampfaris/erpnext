@@ -7,9 +7,13 @@
   {
    "enabled": 1, 
    "mapping": "Milestone to Project"
+  }, 
+  {
+   "enabled": 1, 
+   "mapping": "Issue to Task"
   }
  ], 
- "modified": "2017-10-08 13:28:56.431209", 
+ "modified": "2017-10-08 16:22:04.086386", 
  "modified_by": "Administrator", 
  "module": "ERPNext Integrations", 
  "name": "Github Integration", 
