@@ -9,7 +9,7 @@ def pre_process(issue):
 
 	state = 'Open' if issue.state == 'open' else 'Closed'
 
-	body = markdown(issue.body)
+	body = markdown(issue.body or '')
 
 	return {
 		'id': issue.id,

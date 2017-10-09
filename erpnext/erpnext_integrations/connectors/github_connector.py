@@ -1,17 +1,15 @@
 from __future__ import unicode_literals
 import frappe
 from frappe.data_migration.doctype.data_migration_connector.connectors.base import BaseConnection
-from frappe.utils.password import get_decrypted_password
 from github import Github
 
 class GitHubConnection(BaseConnection):
 	def __init__(self, connector):
 		self.connector = connector
 
-		password = get_decrypted_password('Data Migration Connector', connector.name)
 		self.connection = Github(
 			self.connector.username,
-			password
+			self.get_password()
 		)
 		self.name_field = 'id'
 
@@ -33,6 +31,15 @@ class GitHubConnection(BaseConnection):
 	def get_issues(self, repo, state, start=0, page_length=20):
 		_repo = self.connection.get_repo(repo)
 		return list(_repo.get_issues(state=state)[start:start+page_length])
+
+	def insert(self):
+		pass
+
+	def update(self):
+		pass
+
+	def delete(self):
+		pass
 
 def get_connection(connector):
 	connection = GitHubConnection(connector)
